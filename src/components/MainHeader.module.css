@@ -21,7 +21,12 @@
   
   .header li {
     margin: 0 1rem;
-    width: 5rem;
+    width: 100%;
+  }
+  
+  .home{
+    display: flex;
+    align-items: flex-start;
   }
   
   .header a {

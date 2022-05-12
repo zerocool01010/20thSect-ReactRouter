@@ -7,6 +7,9 @@ const MainHeader = () => {
     <header className={classes.header}>
       <nav>
         <ul>
+          <li className="home">
+            <Link to='/'>Home</Link>
+          </li>
           <li>
             <Link to="/welcome">Welcome</Link>
           </li>
