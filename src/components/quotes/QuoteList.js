@@ -3,6 +3,16 @@ import { useHistory, useLocation } from "react-router-dom";
 import QuoteItem from "./QuoteItem";
 import classes from "./QuoteList.module.css";
 
+const sortQuotes = (quotes, ascending) => {
+  return quotes.sort((quoteA, quoteB) => {
+    if (ascending) {
+      return quoteA.id > quoteB.id ? 1 : -1;
+    } else {
+      return quoteA.id < quoteB.id ? 1 : -1;
+    }
+  });
+};
+
 const QuoteList = (props) => {
   const history = useHistory()
   const location = useLocation() //nos devuelve un objeto con info de la locacion actual del usuario en la pagina
@@ -15,6 +25,8 @@ const QuoteList = (props) => {
   // evalua uno de los key parameters de url que tiene su valor guardado porque en la url esta con un = al lado (sort=value)
   console.log(sortAsc) //devuelve un booleano
 
+  const sortedQuotes = sortQuotes(props.quotes, sortAsc)
+
   return (
     <Fragment>
       <div className={classes.sorting}>
@@ -23,7 +35,7 @@ const QuoteList = (props) => {
         }}>Sort {sortAsc ? 'Descending' : 'Ascending'}</button>
       </div>
       <ul className={classes.list}>
-        {props.quotes.map((quote) => (
+        {sortedQuotes.map((quote) => (
           <QuoteItem
             key={quote.id}
             id={quote.id}
