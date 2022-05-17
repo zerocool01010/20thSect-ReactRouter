@@ -36,6 +36,9 @@ function App() {
         <Route path="/new-quote">
           <NewQuote />
         </Route>
+        <Route path='*'> {/* toma cualquier ruta posible, de modo que si no matchea con otra de las rutas establecidas, se muestra este error para todos los casos restantes */}
+          <h1>Error: Page not found</h1> {/* debe ir al final para que evalue los otros casos antes */}
+        </Route>
       </Switch>
     </Layout>
   );
