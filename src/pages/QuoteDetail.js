@@ -5,7 +5,8 @@ const QuoteDetail = () => {
   console.log(urlParam.quoteId);
   return (
     <>
-      <div>Quote detail is here: </div>
+      <div>Quote detail is here with the author:</div>
+      <p>{urlParam.quoteId}</p> {/* si le agrego la posicion al param, y queda por ejem quoteId[0] entonces pasa el primer char del string */}
       <Route path={`/quotes/${urlParam.quoteId}/comments`}>
         <Comments/>
       </Route>
