@@ -1,8 +1,12 @@
-import React, { useParams, Route } from "react-router-dom";
+import React, { useParams, Route, useRouteMatch } from "react-router-dom";
 import Comments from "../components/comments/Comments";
 import HighQuote from "../components/quotes/HighlightedQuote";
 
 const QuoteDetail = (props) => {
+  //react router hooks
+  const matchR = useRouteMatch()
+  console.log(matchR) //trae un objeto con varios atributos relacionados al path en el que estamos parados
+
   const urlParam = useParams();
   console.log(urlParam); //si vengo desde el Link de QuoteItem entonces le llega un obj = {quoteInfo: 'elem1, elem2'}
 
@@ -24,7 +28,7 @@ const QuoteDetail = (props) => {
         The complete information will be rendered in the following component:
       </p>
       <HighQuote text={quote.text} author={quote.author} />
-      <Route path={`/quotes/${urlParam.quoteInfo}/comments`}>
+      <Route path={`/${matchR}/${urlParam.quoteInfo}/comments`}>
         <Comments />
       </Route>
     </>
