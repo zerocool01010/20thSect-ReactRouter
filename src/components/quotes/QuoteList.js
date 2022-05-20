@@ -31,7 +31,10 @@ const QuoteList = (props) => {
     <Fragment>
       <div className={classes.sorting}>
         <button onClick={() => {
-          history.push(`${location.pathname}?sort=${(sortAsc ? 'desc' : 'asc')}`) //chequeo que si sortAsc es true (o sea, que es 'asc') entonces le cambie el key param a 'desc' y sino lo hace al reves
+          history.push({ //tambien se puede hacer con forma de objeto el history.push y el mismo que la ruta en una sola linea de strings como en el commit previo
+            pathname: location.pathname,
+            search: `?sort=${(sortAsc ? 'desc' : 'asc')}`  //chequeo que si sortAsc es true (o sea, que es 'asc') entonces le cambie el key param a 'desc' y sino lo hace al reves
+          })
         }}>Sort {sortAsc ? 'Descending' : 'Ascending'}</button>
       </div>
       <ul className={classes.list}>
